@@ -1,0 +1,31 @@
+#{extends 'main.html' /}
+
+#{if l}
+	#{set title:'Edição de Livro!!!' /}
+#{/if}
+#{else}
+	#{set title:'Cadastro de Livro!!!' /}
+#{/else}
+
+<h1>Preencha os dados do Livro</h1>
+
+<form action="@{livros.cadastrar}">
+	
+	<input type="hidden" name="l.id" value="${l?.id}">
+	
+	<label>Nome: </label>
+	<input type="text" name="l.nome" value="${l?.nome}" > <br/><br/>
+	
+	<label>Ano: </label>
+	<input type="number" name="l.ano" value="${l?.ano}"> <br/><br/>
+	
+	<label>Editora: </label>
+	<input type="text" name="l.editora" value="${l?.editora}"> <br/><br/>
+	
+	<label>Autor: </label>
+	<input type="text" name="l.autor" value="${l?.autor}"> <br/><br/>
+	
+	<input type="submit">
+	<a href="@{Livros.listar}">Ir para a listagem</a>
+	
+</form>

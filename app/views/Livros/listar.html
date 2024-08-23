@@ -1,0 +1,33 @@
+#{extends 'main.html' /}
+#{set title:'Listagem de Livros' /}
+
+
+<form action="@{Livros.listar}">
+	<input type="text" name="termo" value="${termo}">
+	<input type="submit" value="Pesquisar">
+</form>
+
+<h1>Listagem de Livros</h1>
+
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Ano</th>
+    <th>Editora</th>
+    <th>Autor</th>
+    <th>Ações</th>
+  </tr>
+	#{list items: livros, as:'l'}
+	  <tr>
+  		<td>${l.nome}</td>
+  		<td>${l.ano}</td>
+  		<td>${l.editora}</td>
+  		<td>${l.autor}</td>
+  		<td><a href="@{Livros.editar(l.id)}">Editar |</a></td>
+  		<td><a href="@{Livros.remover(l.id)}">Remover</a></td>
+  	</tr>
+	#{/list}
+</table> <br/>
+<a href="@{Livros.form}">Cadastrar livro</a>
+
+
